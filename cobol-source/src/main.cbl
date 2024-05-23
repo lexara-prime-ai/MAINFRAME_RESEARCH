@@ -2,7 +2,7 @@
        identification division.
        program-id. demo.
        author. Irfan Ghat.
-       date-written.May 25th 2024
+       date-written.May 23rd 2024
        environment division.
 
        data division.
@@ -23,7 +23,7 @@
        procedure division.
        display "What is your social security number " with no advancing
        accept userName
-       display "Hello " userName
+       display "[SSN] -> " userName
 
        stop run.
 
