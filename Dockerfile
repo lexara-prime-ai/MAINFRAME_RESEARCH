@@ -2,7 +2,7 @@ FROM rust:latest
 
 WORKDIR /source
 
-COPY . /source/
+COPY . ./
 
 RUN apt update \
     && apt upgrade -y \
@@ -10,7 +10,7 @@ RUN apt update \
     && apt clean
 
 
-
+RUN chmod +x ./scripts/bash/environment.sh
 
 
 

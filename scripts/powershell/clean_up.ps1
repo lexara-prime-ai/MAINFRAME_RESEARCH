@@ -6,21 +6,18 @@ if (-not $hostname) {
     $hostname = Read-Host -Prompt "Enter your hostname"
 }
 
-# Now you can use the provided hostname variable to construct the path
-$basePath = "C:\cygwin64\home\$hostname\sandbox\cobol-source\bin"
+$basePath = "C:\cygwin64\home\$hostname\sandbox\cobol-source"
+$binPath = Join-Path -Path $basePath -ChildPath "bin"
 
-# Change directory to the target directory
-Set-Location -Path $basePath
-
-
-# Check if the directory to be deleted exists
-$directoryToDelete = "SubDirectoryToDelete"
-if (Test-Path -Path $directoryToDelete -PathType Container) {
-    # If directory exists, delete it
-    Remove-Item -Path $directoryToDelete -Recurse -Force
-    Write-Output "Directory '$directoryToDelete' deleted successfully."
+# Check if the bin directory exists
+if (Test-Path -Path $binPath -PathType Container) {
+    Remove-Item -Path $binPath -Recurse -Force
+    Write-Output "'bin' directory deleted successfully."
 }
 else {
-    # If directory doesn't exist, show an error message
-    Write-Output "Directory '$directoryToDelete' not found."
+    Write-Output "Directory 'bin' not found."
 }
+
+# Recreate the bin directory
+New-Item -Path $binPath -ItemType Directory
+Write-Output "'bin' directory created successfully."
