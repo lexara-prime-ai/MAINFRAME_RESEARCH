@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-west-2" # Specify your AWS region
+  region = "us-west-2"
 }
 
 resource "aws_vpc" "main" {
@@ -23,7 +23,8 @@ resource "aws_subnet" "main" {
 
 # Define EC2 instance for OpenVPN
 resource "aws_instance" "openvpn_server" {
-  ami           = "ami-0c55b159cbfafe1f0" # Use a free-tier eligible AMI
+  ami = "ami-0c55b159cbfafe1f0"
+  # To do -> Update to use free AMI
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.main.id
 
@@ -33,7 +34,8 @@ resource "aws_instance" "openvpn_server" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-0c55b159cbfafe1f0" # Use a free-tier eligible AMI
+  ami = "ami-0c55b159cbfafe1f0"
+  # To do -> Update to use free AMI
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.main.id
 
